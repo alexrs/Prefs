@@ -22,7 +22,6 @@ public class PrefsActivity extends Activity {
         TextView tv5 = (TextView) findViewById(R.id.textView5);
 
 
-        Prefs.with(this).save("STRING", "HEY PREFS!");
         tv1.setText("String: " + Prefs.with(this).getString("STRING", ""));
 
         Prefs.with(this).save("BOOL", true);
