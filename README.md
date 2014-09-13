@@ -1,4 +1,4 @@
 Prefs
 =====
 
-Wrapper over the Android Preferences which provides a fluid syntax.
+Wrapper for Android Preferences which provides a fluid syntax.
