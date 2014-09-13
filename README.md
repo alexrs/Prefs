@@ -19,7 +19,7 @@ You can save:
 * float
 * long
 * boolean
-* Set<String>
+* Set\<String>
 
 #### Get data saved
 ```JAVA
