@@ -1,5 +1,7 @@
 Prefs
 =====
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Prefs-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/978)
+
 
 Wrapper for Android Preferences which provides a fluid syntax.
 
