@@ -17,6 +17,7 @@ package me.alexrs.prefs.lib;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import java.util.Map;
 import java.util.Set;
@@ -28,8 +29,6 @@ import java.util.Set;
  */
 public class Prefs {
 
-    private static final String TAG = "Prefs";
-
     static Prefs singleton = null;
 
     static SharedPreferences preferences;
@@ -37,13 +36,25 @@ public class Prefs {
     static SharedPreferences.Editor editor;
 
     Prefs(Context context) {
-        preferences = context.getSharedPreferences(TAG, Context.MODE_PRIVATE);
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        editor = preferences.edit();
+    }
+
+    Prefs(Context context, String name, int mode) {
+        preferences = context.getSharedPreferences(name, mode);
         editor = preferences.edit();
     }
 
     public static Prefs with(Context context) {
         if (singleton == null) {
-            singleton = new Builder(context).build();
+            singleton = new Builder(context, null, -1).build();
+        }
+        return singleton;
+    }
+
+    public static Prefs with(Context context, String name, int mode) {
+        if (singleton == null) {
+            singleton = new Builder(context, name, mode).build();
         }
         return singleton;
     }
@@ -107,12 +118,16 @@ public class Prefs {
     private static class Builder {
 
         private final Context context;
+        private final int mode;
+        private final String name;
 
-        public Builder(Context context) {
+        public Builder(Context context, String name, int mode) {
             if (context == null) {
                 throw new IllegalArgumentException("Context must not be null.");
             }
             this.context = context.getApplicationContext();
+            this.name = name;
+            this.mode = mode;
         }
 
         /**
@@ -121,7 +136,10 @@ public class Prefs {
          * @return an instance of Prefs
          */
         public Prefs build() {
-            return new Prefs(context);
+            if (mode == -1 || name == null) {
+                return new Prefs(context);
+            }
+            return new Prefs(context, name, mode);
         }
     }
 }

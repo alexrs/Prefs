@@ -2,7 +2,6 @@
     package="me.alexrs.prefs.lib">
 
     <application android:allowBackup="true">
-
     </application>
 
 </manifest>
