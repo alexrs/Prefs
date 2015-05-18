@@ -116,7 +116,7 @@ public class Prefs {
     }
 
     public void removeAll(){
-        editor.clear();
+        editor.clear().apply();
     }
 
     public void contains(String key){
