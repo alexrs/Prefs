@@ -115,6 +115,14 @@ public class Prefs {
         editor.remove(key).apply();
     }
 
+    public void removeAll(){
+        editor.clear();
+    }
+
+    public void contains(String key){
+        preferences.contains(key);
+    }
+
     private static class Builder {
 
         private final Context context;
