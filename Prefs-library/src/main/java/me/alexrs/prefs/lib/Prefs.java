@@ -23,8 +23,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author Alejandro Rodriguez <https://github.com/Alexrs95/Prefs>
- *         <p/>
+ * @author Alejandro Rodriguez (https://github.com/Alexrs95/Prefs)
+ *
  *         Wrapper over the Android Preferences which provides a fluid syntax
  */
 public class Prefs {
