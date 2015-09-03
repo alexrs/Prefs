@@ -31,6 +31,8 @@ public class Prefs {
 
     static Prefs singleton = null;
 
+    static String prefName = null;
+
     static SharedPreferences preferences;
 
     static SharedPreferences.Editor editor;
@@ -38,11 +40,13 @@ public class Prefs {
     Prefs(Context context) {
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         editor = preferences.edit();
+        prefName = null;
     }
 
     Prefs(Context context, String name, int mode) {
         preferences = context.getSharedPreferences(name, mode);
         editor = preferences.edit();
+        prefName = name;
     }
 
     public static Prefs with(Context context) {
@@ -53,7 +57,7 @@ public class Prefs {
     }
 
     public static Prefs with(Context context, String name, int mode) {
-        if (singleton == null) {
+        if(singleton == null || (prefName != null && !prefName.equals(name))) {
             singleton = new Builder(context, name, mode).build();
         }
         return singleton;
