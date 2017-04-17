@@ -7,7 +7,7 @@ Wrapper for Android Preferences which provides a fluid syntax.
 
 ## Usage
 This library is really easy to use.
-####Download
+#### Download
 ```GROOVY
 compile 'me.alexrs:prefs:1.1.0'
 ```
